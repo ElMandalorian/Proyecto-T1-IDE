@@ -1,3 +1,9 @@
+#Credo por:
+# - Brandon Ismael Rodriguez Rodriguez 23480289
+# - Carlos Daniel Garcia Hernandez 24480704
+# - Jorge Orlando Navarro Estrada 24480705
+# - Victor Alan Pulido Guajardo 24480708
+# - Jaime Isaias Villareal Gonzalez 24480709
 from pulp import * #Libreria PuLP para programacion lineal
 from itertools import combinations #Libreria para combinaciones
 import matplotlib.pyplot as plt #Libreria Matplotlib para graficas

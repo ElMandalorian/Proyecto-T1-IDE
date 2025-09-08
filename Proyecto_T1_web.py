@@ -112,3 +112,16 @@ if submitted:
     ax.set_ylim(0, y_max*1.2)
 
     st.pyplot(fig) # Mostrar gráfico en Streamlit
+
+    st.markdown(
+        """
+        <div style='text-align: center; margin-top: 50px;'>
+        <p><b>Credo por:</b></p>
+        <p>- Brandon Ismael Rodriguez Rodriguez 23480289</p>"
+        <p>- Carlos Daniel Garcia Hernandez 24480704</p>
+        <p>- Jorge Orlando Navarro Estrada 24480705</p>
+        <p>- Victor Alan Pulido Guajardo 24480708</p>
+        <p>- Jaime Isaias Villareal Gonzalez 24480709</p>
+        </div>
+        """
+    )
