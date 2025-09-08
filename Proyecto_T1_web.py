@@ -114,14 +114,17 @@ if submitted:
     st.pyplot(fig) # Mostrar gráfico en Streamlit
 
     st.markdown(
-        """
-        <div style='text-align: center; margin-top: 50px;'>
-        <p><b>Credo por:</b></p>
-        <p>- Brandon Ismael Rodriguez Rodriguez 23480289</p>"
+    """
+    <div style='text-align: center; margin-top: 50px;'>
+        <hr>
+        <p><b>Creado por:</b></p>
+        <p>- Brandon Ismael Rodriguez Rodriguez 23480289</p>
         <p>- Carlos Daniel Garcia Hernandez 24480704</p>
         <p>- Jorge Orlando Navarro Estrada 24480705</p>
-        <p>- Victor Alan Pulido Guajardo 24480708</p>
+        <p>- Victor Alan Pulido Guajardo 24480708</p> 
         <p>- Jaime Isaias Villareal Gonzalez 24480709</p>
-        </div>
-        """
-    )
+        <p>© 2025 Todos los derechos reservados.</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
