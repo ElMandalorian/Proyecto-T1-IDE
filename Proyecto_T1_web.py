@@ -20,12 +20,13 @@ if "restricciones" not in st.session_state:
 # Formulario para agregar nuevas restricciones
 with st.form("agregar_restriccion_form"):
     st.write("Agregar una nueva restricción: a*x + b*y <= c")
-    a = st.number_input("Coeficiente de x (a)", value=1.0)
+    # Aquí no limitamos los decimales, se guarda tal cual el usuario ingrese
+    a = st.number_input("Coeficiente de x (a)", value=1.0) 
     b = st.number_input("Coeficiente de y (b)", value=1.0)
     c = st.number_input("Disponible (c)", value=10.0)
     add_btn = st.form_submit_button("Agregar restricción") #Botón para agregar restricción
     if add_btn:
-        st.session_state.restricciones.append((a, b, c)) #Agrega la restricción a la lista
+        st.session_state.restricciones.append((a, b, c)) #Se agrega sin redondear
 
 # Mostrar todas las restricciones actuales
 st.subheader("Restricciones actuales:")
@@ -66,16 +67,15 @@ if st.button("Resolver problema"):
         y_opt = y.value() #Valor óptimo de y
         z_opt = prob.objective.value() #Valor óptimo de Z
 
-        st.subheader("Conclusión:") #Muestra la conclusión
+        st.subheader("Conclusión:")
+        # Aquí limitamos a 2 decimales solo en la visualización
         st.write(f"Se debe producir {x_opt:.2f} unidades de x y {y_opt:.2f} unidades de y, logrando un valor máximo de Z = {z_opt:.2f}.")
 
-        # Graficar los resultados
-        # Determinar límites para la gráfica
+        # Graficar resultados
         x_max = max([c/a if a != 0 else 0 for a,b,c in restricciones])*1.2
         y_max = max([c/b if b != 0 else 0 for a,b,c in restricciones])*1.2
         x_vals = np.linspace(0, x_max, 400)
         fig, ax = plt.subplots(figsize=(8,8))
-        # Graficar restricciones
         for a, b, c in restricciones:
             if b != 0:
                 y_vals = np.clip((c - a*x_vals)/b, 0, y_max)
@@ -117,3 +117,4 @@ if st.button("Resolver problema"):
         """,
         unsafe_allow_html=True
     )
+

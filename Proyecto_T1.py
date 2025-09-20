@@ -20,14 +20,15 @@ restricciones = []
 #Ingresar restricciones hasta que el usuario escriba 'fin'
 i = 0
 while True:
-    print(f"Restriccion {i+1}: a*x + b*y <= c")
+    print(f"\nRestriccion {i+1}: a*x + b*y <= c")
     entrada = input("Deseas agregar otra restricción? (si/fin): ").strip().lower()
     if entrada == "fin":
         break
+    # Aquí no limitamos decimales al ingresar
     a = float(input("  Coeficiente de x (a): "))
     b = float(input("  Coeficiente de y (b): "))
     c = float(input("  Disponible (c): "))
-    restricciones.append((a, b, c))#Agrega las restricciones a la lista
+    restricciones.append((a, b, c)) #Agregar la restricción a la lista
     i += 1
 
 #Calcular los puntos de interseccion
@@ -59,12 +60,13 @@ x_opt = x.value() #Valor optimo de x
 y_opt = y.value() #Valor optimo de y
 z_opt = prob.objective.value() #Valor optimo de Z
 
+#Mostrar solución óptima con dos decimales
 print("\n=== Solución óptima ===")
 print(f"x = {x_opt:.2f}")
 print(f"y = {y_opt:.2f}")
 print(f"Z máxima = {z_opt:.2f}")
 
-#Conlusion
+#Conlusion con dos decimales
 print("\nConclusión:")
 print(f"Se debe producir {x_opt:.2f} unidades de x y {y_opt:.2f} unidades de y, logrando un valor máximo de Z = {z_opt:.2f}.")
 
@@ -112,7 +114,7 @@ for p in puntos:
 
 # Solución óptima con offset para texto
 plt.plot(x_opt, y_opt, "ro", markersize=10, label="Solución óptima")
-plt.text(x_opt + x_max*0.02, y_opt + y_max*0.02, f"({x_opt:.1f},{y_opt:.1f})", fontsize=10, color='red')
+plt.text(x_opt + x_max*0.02, y_opt + y_max*0.02, f"({x_opt:.2f},{y_opt:.2f})", fontsize=10, color='red')
 
 # Etiquetas y leyenda
 plt.xlabel("x")
@@ -123,4 +125,5 @@ plt.grid(True)
 plt.xlim(0, x_max*1.2)
 plt.ylim(0, y_max*1.2)
 plt.show()
+
 
