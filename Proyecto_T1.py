@@ -1,4 +1,4 @@
-#Credo por:
+#Creado por:
 # - Brandon Ismael Rodriguez Rodriguez 23480289
 # - Carlos Daniel Garcia Hernandez 24480704
 # - Jorge Orlando Navarro Estrada 24480705
@@ -16,14 +16,19 @@ v2 = float(input("Ingresa el valor de y: "))
 
 #Sacar las restricciones
 restricciones = []
-num_res = int(input("¿Cuantas restricciones tienes? "))
 
-for i in range(num_res):#Pide las restricciones
+#Ingresar restricciones hasta que el usuario escriba 'fin'
+i = 0
+while True:
     print(f"Restriccion {i+1}: a*x + b*y <= c")
+    entrada = input("Deseas agregar otra restricción? (si/fin): ").strip().lower()
+    if entrada == "fin":
+        break
     a = float(input("  Coeficiente de x (a): "))
     b = float(input("  Coeficiente de y (b): "))
     c = float(input("  Disponible (c): "))
     restricciones.append((a, b, c))#Agrega las restricciones a la lista
+    i += 1
 
 #Calcular los puntos de interseccion
 puntos = []
@@ -118,3 +123,4 @@ plt.grid(True)
 plt.xlim(0, x_max*1.2)
 plt.ylim(0, y_max*1.2)
 plt.show()
+
