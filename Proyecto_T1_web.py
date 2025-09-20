@@ -8,8 +8,9 @@ st.title("Proyecto T1: Programación Lineal Interactiva") #Título de la aplicac
 
 # Función objetivo
 st.header("Función Objetivo: Z = v1*x + v2*y") 
-v1 = st.number_input("Coeficiente de x (v1)", value=1.0)
-v2 = st.number_input("Coeficiente de y (v2)", value=1.0)
+# Acepta cualquier decimal exacto
+v1 = st.number_input("Coeficiente de x (v1)", value=1.0, step=0.000001, format="%.6f")
+v2 = st.number_input("Coeficiente de y (v2)", value=1.0, step=0.000001, format="%.6f")
 
 # Restricciones
 st.header("Restricciones")
@@ -20,10 +21,10 @@ if "restricciones" not in st.session_state:
 # Formulario para agregar nuevas restricciones
 with st.form("agregar_restriccion_form"):
     st.write("Agregar una nueva restricción: a*x + b*y <= c")
-    # Aquí no limitamos los decimales, se guarda tal cual el usuario ingrese
-    a = st.number_input("Coeficiente de x (a)", value=1.0) 
-    b = st.number_input("Coeficiente de y (b)", value=1.0)
-    c = st.number_input("Disponible (c)", value=10.0)
+    # No se limita decimales, step muy pequeño y formato de 6 decimales
+    a = st.number_input("Coeficiente de x (a)", value=1.0, step=0.000001, format="%.6f") 
+    b = st.number_input("Coeficiente de y (b)", value=1.0, step=0.000001, format="%.6f")
+    c = st.number_input("Disponible (c)", value=10.0, step=0.000001, format="%.6f")
     add_btn = st.form_submit_button("Agregar restricción") #Botón para agregar restricción
     if add_btn:
         st.session_state.restricciones.append((a, b, c)) #Se agrega sin redondear
@@ -117,4 +118,5 @@ if st.button("Resolver problema"):
         """,
         unsafe_allow_html=True
     )
+
 
